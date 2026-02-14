@@ -1,0 +1,1041 @@
+/* ===========================
+   CSS Variables & Root Styles
+   =========================== */
+:root {
+    /* Light Mode - Ramadan Theme Colors */
+    --bg-primary: #f5f1e8;
+    --bg-secondary: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.98);
+    --text-primary: #1a1a1a;
+    --text-secondary: #5a5a5a;
+    --accent-primary: #d4a574;
+    --accent-secondary: #b8860b;
+    --accent-gradient: linear-gradient(135deg, #d4a574 0%, #c89858 50%, #b8860b 100%);
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.12);
+    --border-color: rgba(212, 165, 116, 0.3);
+    
+    /* Islamic Colors */
+    --islamic-green: #006837;
+    --islamic-green-light: #008844;
+    --ramadan-gold: #d4af37;
+    --night-blue: #1a237e;
+    --sunset-orange: #ff6b35;
+}
+
+[data-theme="dark"] {
+    /* Dark Mode - Night Sky Theme */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #141b3d;
+    --bg-card: rgba(20, 27, 61, 0.98);
+    --text-primary: #f0f0f0;
+    --text-secondary: #b0b0b0;
+    --accent-primary: #ffd700;
+    --accent-secondary: #ffed4e;
+    --accent-gradient: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffb700 100%);
+    --shadow-light: rgba(0, 0, 0, 0.4);
+    --shadow-medium: rgba(0, 0, 0, 0.6);
+    --border-color: rgba(255, 215, 0, 0.3);
+    
+    --islamic-green: #00ff88;
+    --islamic-green-light: #66ffaa;
+    --ramadan-gold: #ffd700;
+}
+
+/* ===========================
+   Global Styles
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.3s ease;
+    position: relative;
+}
+
+/* ===========================
+   Enhanced Background Layer
+   =========================== */
+.background-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Mosque Silhouette */
+.mosque-silhouette {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to top, var(--bg-secondary) 0%, transparent 100%);
+    opacity: 0.3;
+}
+
+.mosque-silhouette::before,
+.mosque-silhouette::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+}
+
+/* Left minaret */
+.mosque-silhouette::before {
+    left: 15%;
+    width: 30px;
+    height: 120px;
+    background: linear-gradient(to top, var(--accent-secondary) 0%, var(--accent-primary) 100%);
+    clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%);
+}
+
+/* Right minaret */
+.mosque-silhouette::after {
+    right: 15%;
+    width: 30px;
+    height: 120px;
+    background: linear-gradient(to top, var(--accent-secondary) 0%, var(--accent-primary) 100%);
+    clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%);
+}
+
+/* Stars Layer */
+.stars-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, var(--ramadan-gold), transparent),
+        radial-gradient(2px 2px at 60% 70%, var(--accent-primary), transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, var(--ramadan-gold), transparent),
+        radial-gradient(2px 2px at 90% 60%, var(--accent-secondary), transparent),
+        radial-gradient(1px 1px at 33% 80%, white, transparent),
+        radial-gradient(2px 2px at 15% 90%, var(--ramadan-gold), transparent);
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    opacity: 0.5;
+    animation: twinkle 5s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+}
+
+/* Moon with Glow */
+.moon-glow {
+    position: absolute;
+    top: 8%;
+    right: 12%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--ramadan-gold), var(--accent-primary));
+    box-shadow: 
+        0 0 40px rgba(255, 215, 0, 0.6),
+        0 0 80px rgba(255, 215, 0, 0.4),
+        inset -15px 0px 0px rgba(0, 0, 0, 0.1);
+    animation: moonGlow 4s ease-in-out infinite;
+}
+
+@keyframes moonGlow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 40px rgba(255, 215, 0, 0.6),
+            0 0 80px rgba(255, 215, 0, 0.4),
+            inset -15px 0px 0px rgba(0, 0, 0, 0.1);
+    }
+    50% { 
+        box-shadow: 
+            0 0 60px rgba(255, 215, 0, 0.8),
+            0 0 100px rgba(255, 215, 0, 0.5),
+            inset -15px 0px 0px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Floating Clouds */
+.clouds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    background: 
+        radial-gradient(ellipse at 20% 40%, var(--text-secondary) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 60%, var(--text-secondary) 0%, transparent 40%);
+    animation: cloudFloat 30s linear infinite;
+}
+
+@keyframes cloudFloat {
+    from { transform: translateX(-10%); }
+    to { transform: translateX(10%); }
+}
+
+/* ===========================
+   Decorative Lanterns
+   =========================== */
+.decorations {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.lantern-string {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    padding: 20px;
+}
+
+.lantern-string.left { left: 5%; }
+.lantern-string.right { right: 5%; }
+
+.lantern {
+    width: 35px;
+    height: 50px;
+    background: var(--accent-gradient);
+    border-radius: 0 0 17px 17px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(212, 165, 116, 0.5);
+    animation: swingLantern 3s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.lantern::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 12px;
+    background: var(--accent-secondary);
+    border-radius: 12px 12px 0 0;
+}
+
+.lantern::after {
+    content: '';
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 23px;
+    background: var(--accent-secondary);
+}
+
+@keyframes swingLantern {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+}
+
+/* Islamic Patterns */
+.islamic-pattern {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    opacity: 0.05;
+    background-image: 
+        repeating-conic-gradient(from 0deg at 50% 50%, 
+            var(--accent-primary) 0deg 10deg, 
+            transparent 10deg 20deg);
+}
+
+.pattern-1 {
+    top: 20%;
+    left: 10%;
+    animation: rotatePattern 30s linear infinite;
+}
+
+.pattern-2 {
+    bottom: 25%;
+    right: 10%;
+    animation: rotatePattern 40s linear infinite reverse;
+}
+
+@keyframes rotatePattern {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ===========================
+   Theme Toggle
+   =========================== */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 3px solid var(--accent-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    z-index: 1000;
+    box-shadow: 0 6px 20px var(--shadow-medium);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+[data-theme="light"] .moon-icon {
+    display: none;
+}
+
+[data-theme="dark"] .sun-icon {
+    display: none;
+}
+
+/* ===========================
+   Container & Layout
+   =========================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* ===========================
+   Header
+   =========================== */
+.header {
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 30px;
+}
+
+.header-content {
+    background: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 
+        0 10px 40px var(--shadow-medium),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 3px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent-gradient);
+}
+
+.bismillah {
+    font-family: 'Amiri', serif;
+    font-size: 1.3rem;
+    color: var(--accent-primary);
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.title .arabic {
+    font-family: 'Amiri', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+}
+
+.title .english {
+    font-size: 1.6rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.location {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.location-icon {
+    font-size: 1.4rem;
+}
+
+.status-badge {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--accent-gradient);
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+}
+
+.badge-icon {
+    font-size: 1.2rem;
+}
+
+/* ===========================
+   Current Day Section
+   =========================== */
+.current-day-section {
+    margin-bottom: 30px;
+}
+
+.current-day-card {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px var(--shadow-light);
+    border: 3px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.ramadan-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.day-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.day-number {
+    font-size: 4rem;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.day-total {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-top: -10px;
+}
+
+.date-info {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hijri-date {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.gregorian-date {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* ===========================
+   Countdown Section
+   =========================== */
+.countdown-section {
+    margin-bottom: 30px;
+}
+
+.countdown-card {
+    background: var(--bg-card);
+    padding: 45px 40px;
+    border-radius: 25px;
+    box-shadow: 
+        0 10px 40px var(--shadow-medium),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 3px solid var(--border-color);
+    text-align: center;
+}
+
+.countdown-title {
+    font-size: 2rem;
+    margin-bottom: 35px;
+    color: var(--text-primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.countdown-icon {
+    font-size: 2.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.time-value {
+    font-size: 4.5rem;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    min-width: 120px;
+    text-align: center;
+    line-height: 1;
+    font-family: 'Cairo', sans-serif;
+}
+
+.time-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.time-separator {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    margin: 0 8px;
+}
+
+.countdown-message {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* ===========================
+   Today's Timings
+   =========================== */
+.today-timings {
+    margin-bottom: 45px;
+}
+
+.timing-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.timing-card {
+    background: var(--bg-card);
+    padding: 35px 30px;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px var(--shadow-light);
+    border: 3px solid var(--border-color);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.timing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.timing-card:hover::before {
+    opacity: 1;
+}
+
+.timing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px var(--shadow-medium);
+}
+
+.card-header {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timing-icon {
+    font-size: 3.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.icon-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    opacity: 0.2;
+}
+
+.sehri-card {
+    border-left: 5px solid var(--islamic-green);
+}
+
+.sehri-card .icon-glow {
+    background: radial-gradient(circle, var(--islamic-green-light), transparent);
+}
+
+.iftar-card {
+    border-left: 5px solid var(--sunset-orange);
+}
+
+.iftar-card .icon-glow {
+    background: radial-gradient(circle, var(--sunset-orange), transparent);
+}
+
+.timing-name {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+.timing-time {
+    font-size: 3rem;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    line-height: 1;
+}
+
+.timing-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.timing-note {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* ===========================
+   Timetable Section
+   =========================== */
+.timetable-section {
+    margin-bottom: 45px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 35px;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.title-icon {
+    font-size: 2.5rem;
+}
+
+.title-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.table-container {
+    background: var(--bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 25px var(--shadow-light);
+    border: 3px solid var(--border-color);
+}
+
+.timetable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.timetable thead {
+    background: var(--accent-gradient);
+}
+
+.timetable th {
+    padding: 20px 16px;
+    text-align: left;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timetable tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.timetable tbody tr:hover {
+    background: rgba(212, 165, 116, 0.08);
+}
+
+.timetable tbody tr.current-day {
+    background: rgba(212, 165, 116, 0.18);
+    font-weight: 600;
+    border-left: 5px solid var(--islamic-green);
+}
+
+.timetable td {
+    padding: 18px 16px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.timetable tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Loading animation */
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--border-color);
+    border-top-color: var(--accent-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===========================
+   Notes Section
+   =========================== */
+.notes-section {
+    margin-bottom: 45px;
+}
+
+.note-card {
+    background: var(--bg-card);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px var(--shadow-light);
+    border: 3px solid var(--border-color);
+    border-left: 5px solid var(--islamic-green);
+}
+
+.note-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.note-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.note-card li {
+    padding: 12px 0;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.note-card li strong {
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+/* ===========================
+   Footer
+   =========================== */
+.footer {
+    text-align: center;
+    padding: 50px 20px;
+    margin-top: 40px;
+    border-top: 2px solid var(--border-color);
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-prayer {
+    font-family: 'Amiri', serif;
+    font-size: 1.8rem;
+    color: var(--accent-primary);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.footer-translation {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.footer-note {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.footer-year {
+    font-size: 1rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+@media (max-width: 768px) {
+    .title .arabic {
+        font-size: 2.5rem;
+    }
+    
+    .title .english {
+        font-size: 1.3rem;
+    }
+    
+    .bismillah {
+        font-size: 1.1rem;
+    }
+    
+    .time-value {
+        font-size: 3rem;
+        min-width: 90px;
+    }
+    
+    .time-separator {
+        font-size: 2.5rem;
+        margin: 0 5px;
+    }
+    
+    .countdown-title {
+        font-size: 1.5rem;
+    }
+    
+    .timing-time {
+        font-size: 2.5rem;
+    }
+    
+    .day-number {
+        font-size: 3rem;
+    }
+    
+    .theme-toggle {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+    }
+    
+    .timetable th,
+    .timetable td {
+        padding: 14px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .current-day-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .date-info {
+        text-align: center;
+    }
+    
+    .lantern-string {
+        display: none;
+    }
+    
+    .moon-glow {
+        width: 80px;
+        height: 80px;
+        top: 5%;
+        right: 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 12px;
+    }
+    
+    .countdown-card {
+        padding: 25px 20px;
+    }
+    
+    .time-value {
+        font-size: 2.5rem;
+        min-width: 70px;
+    }
+    
+    .time-separator {
+        font-size: 2rem;
+        margin: 0 3px;
+    }
+    
+    .time-label {
+        font-size: 0.75rem;
+    }
+    
+    .timetable th,
+    .timetable td {
+        padding: 12px 8px;
+        font-size: 0.8rem;
+    }
+    
+    .footer-prayer {
+        font-size: 1.4rem;
+    }
+}
+
+/* ===========================
+   Print Styles
+   =========================== */
+@media print {
+    .theme-toggle,
+    .decorations,
+    .background-layer,
+    .countdown-section,
+    .notes-section {
+        display: none;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+    
+    .timetable {
+        page-break-inside: avoid;
+    }
+}
+
+/* ===========================
+   Accessibility
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ===========================
+   Loading State
+   =========================== */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* ===========================
+   Smooth Transitions
+   =========================== */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

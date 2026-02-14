@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Timings 2025 - Karachi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
+</head>
+<body>
+    <!-- Ramadan Background Images -->
+    <div class="background-layer">
+        <div class="mosque-silhouette"></div>
+        <div class="stars-layer"></div>
+        <div class="moon-glow"></div>
+        <div class="clouds"></div>
+    </div>
+
+    <!-- Decorative Elements -->
+    <div class="decorations">
+        <div class="lantern-string left">
+            <div class="lantern" style="--delay: 0s;"></div>
+            <div class="lantern" style="--delay: 0.5s;"></div>
+            <div class="lantern" style="--delay: 1s;"></div>
+        </div>
+        <div class="lantern-string right">
+            <div class="lantern" style="--delay: 0.3s;"></div>
+            <div class="lantern" style="--delay: 0.8s;"></div>
+            <div class="lantern" style="--delay: 1.3s;"></div>
+        </div>
+        <div class="islamic-pattern pattern-1"></div>
+        <div class="islamic-pattern pattern-2"></div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+                <h1 class="title">
+                    <span class="arabic">رمضان مبارک</span>
+                    <span class="english">Ramadan Mubarak 2025</span>
+                </h1>
+                <div class="location">
+                    <span class="location-icon">📍</span>
+                    <span id="cityName">Karachi, Pakistan</span>
+                </div>
+                <div class="status-badge" id="statusBadge">
+                    <span class="badge-icon">⏳</span>
+                    <span id="statusText">Ramadan starts in 3 days</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Current Day Info -->
+        <section class="current-day-section">
+            <div class="current-day-card">
+                <div class="ramadan-day">
+                    <span class="day-label">Ramadan Day</span>
+                    <span class="day-number" id="currentRamadanDay">--</span>
+                    <span class="day-total">/ 30</span>
+                </div>
+                <div class="date-info">
+                    <div class="hijri-date" id="hijriDate">Loading...</div>
+                    <div class="gregorian-date" id="gregorianDate">14 February 2025</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Countdown -->
+        <section class="countdown-section">
+            <div class="countdown-card">
+                <h2 class="countdown-title" id="countdownTitle">
+                    <span class="countdown-icon" id="countdownIcon">🌙</span>
+                    <span id="countdownLabel">Time Until Ramadan Begins</span>
+                </h2>
+                <div class="countdown-timer" id="countdown">
+                    <div class="time-unit">
+                        <span class="time-value" id="days">03</span>
+                        <span class="time-label">Days</span>
+                    </div>
+                    <div class="time-separator">:</div>
+                    <div class="time-unit">
+                        <span class="time-value" id="hours">00</span>
+                        <span class="time-label">Hours</span>
+                    </div>
+                    <div class="time-separator">:</div>
+                    <div class="time-unit">
+                        <span class="time-value" id="minutes">00</span>
+                        <span class="time-label">Minutes</span>
+                    </div>
+                    <div class="time-separator">:</div>
+                    <div class="time-unit">
+                        <span class="time-value" id="seconds">00</span>
+                        <span class="time-label">Seconds</span>
+                    </div>
+                </div>
+                <div class="countdown-message" id="countdownMessage"></div>
+            </div>
+        </section>
+
+        <!-- Today's Timings -->
+        <section class="today-timings" id="todayTimingsSection">
+            <div class="timing-cards">
+                <div class="timing-card sehri-card">
+                    <div class="card-header">
+                        <div class="timing-icon">🌙</div>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3 class="timing-name">Sehri Ends</h3>
+                    <div class="timing-time" id="todaySehri">--:--</div>
+                    <div class="timing-label">Fajr Prayer Time</div>
+                    <div class="timing-note">Wake up before this time</div>
+                </div>
+                <div class="timing-card iftar-card">
+                    <div class="card-header">
+                        <div class="timing-icon">🌅</div>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3 class="timing-name">Iftar Time</h3>
+                    <div class="timing-time" id="todayIftar">--:--</div>
+                    <div class="timing-label">Maghrib Prayer Time</div>
+                    <div class="timing-note">Break your fast</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Full Month Timetable -->
+        <section class="timetable-section">
+            <h2 class="section-title">
+                <span class="title-icon">📅</span>
+                Complete Ramadan 2025 Timetable
+                <span class="title-subtitle">30 Days of Blessing</span>
+            </h2>
+            <div class="table-container">
+                <table class="timetable">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Islamic Date</th>
+                            <th>Gregorian Date</th>
+                            <th>Sehri (Fajr)</th>
+                            <th>Iftar (Maghrib)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timetableBody">
+                        <tr class="loading-row">
+                            <td colspan="5" style="text-align: center; padding: 40px;">
+                                <div class="loader"></div>
+                                Loading prayer timings from Aladhan API...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Important Notes -->
+        <section class="notes-section">
+            <div class="note-card">
+                <h3>📌 Important Information</h3>
+                <ul>
+                    <li>✅ Ramadan 2025 begins on <strong>Monday, 17 February 2025</strong></li>
+                    <li>✅ All timings are calculated for <strong>Karachi, Pakistan</strong></li>
+                    <li>✅ Prayer times are fetched from <strong>Aladhan API</strong> (authentic source)</li>
+                    <li>✅ Sehri time = Fajr prayer time (last time to eat)</li>
+                    <li>✅ Iftar time = Maghrib prayer time (time to break fast)</li>
+                    <li>🌙 May Allah accept your fasting and prayers</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-prayer">اللَّهُمَّ تَقَبَّلْ مِنَّا صِيَامَنَا وَقِيَامَنَا</p>
+                <p class="footer-translation">"O Allah, accept our fasting and our prayers"</p>
+                <p class="footer-note">Timings automatically updated • Real-time countdown • Karachi timezone (PKT)</p>
+                <p class="footer-year">Ramadan 1446 AH / 2025 CE</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
